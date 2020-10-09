@@ -8,46 +8,40 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
+import com.model.Header;
 import com.model.RequestXML;
 
 public class ParseUtil {
-	
+
 	public static RequestXML parseA2AXML(String xml) {
-		
+
 		RequestXML request = new RequestXML();
 		XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
 		xmlInputFactory.setProperty(XMLInputFactory.IS_COALESCING, Boolean.TRUE);
 		StringReader reader = new StringReader(xml);
 		XMLEvent xmlEvent;
-		
+
 		try {
 			XMLEventReader xmlEventReader = xmlInputFactory.createXMLEventReader(reader);
 			while (xmlEventReader.hasNext()) {
 				xmlEvent = xmlEventReader.nextEvent();
 				if (xmlEvent.isStartElement()) {
 					StartElement startElement = xmlEvent.asStartElement();
+					System.out.println("its a here");
+					request.header = new Header();
 					switch (startElement.getName().toString()) {
-					case "": {
-						// do nothing
-						break;
-					}
-					/***************header***************/
-					case "extsysname":{
+					case "extsysname": {
+						xmlEvent = xmlEventReader.nextEvent();
 						if (xmlEvent.isCharacters()) {
-							request.header.setExtsysname(xmlEvent.asCharacters().getData());
+							request.header.extsysname = xmlEvent.asCharacters().getData();
 						}
 						break;
 					}
 					
-					case "datpost":{
-						if (xmlEvent.isCharacters()) {
-							request.header.setDatpost(xmlEvent.asCharacters().getData());
-						}
-						break;
-					}
 					
+
 					}
-					
+
 				}
 			}
 		} catch (XMLStreamException e) {
@@ -55,7 +49,7 @@ public class ParseUtil {
 			e.printStackTrace();
 		}
 		return request;
-		
+
 	}
 
 }

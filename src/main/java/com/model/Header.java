@@ -7,7 +7,7 @@ public class Header {
 	*(mandatory) This will be a fix value 'COAPI'.
 	* Incase any other value(not in list) passed then error will be displayed " Invalid Channel Id".(String 10)
 	*/
-	private String extsysname;
+	public String extsysname;
 	
 	/**
 	*(mandatory) datpost(yyyy-mm-dd) field received in Request XML from third party system cannot be future date.

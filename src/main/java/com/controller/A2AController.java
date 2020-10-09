@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.model.RequestXML;
+import com.util.ParseUtil;
+
 import org.springframework.http.MediaType;
 
 import static java.time.temporal.ChronoUnit.MILLIS;
@@ -35,8 +39,12 @@ public class A2AController {
 		print(System.lineSeparator() + "Entered A2A :", refTime);
 
 		// ******************** 1. Parse the XML to Object**********************
-		
-		
+		RequestXML request = ParseUtil.parseA2AXML(requestXML);
+		if (request == null) {
+			System.out.println("parse is null");
+		}
+		System.out.println(request.header.extsysname);
+		print("Parse Complete:", refTime);
 
 		return "null";
 	}
