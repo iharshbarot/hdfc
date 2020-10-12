@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.model.RequestXML;
 import com.util.ParseUtil;
+import com.util.XMLBuilder;
 
 import org.springframework.http.MediaType;
 
@@ -42,11 +43,16 @@ public class A2AController {
 		RequestXML request = ParseUtil.parseA2AXML(requestXML);
 		if (request == null) {
 			System.out.println("parse is null");
+			return "null";
 		}
-		//System.out.println(request.header.extsysname);
 		print("Parse Complete:", refTime);
+		
+		// ******************** 2. Generate Bank Request**********************
+		String xml = XMLBuilder.hdfcRequest(request);
+		print("Ganerate Bank Request Complete:", refTime);
+		
 
-		return "null";
+		return xml;
 	}
 
 	private void print(String message, LocalTime refTime) {
