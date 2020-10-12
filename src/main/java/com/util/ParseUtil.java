@@ -10,6 +10,7 @@ import javax.xml.stream.events.XMLEvent;
 
 import com.model.Header;
 import com.model.RequestXML;
+import com.model.Summary;
 
 public class ParseUtil {
 
@@ -20,6 +21,7 @@ public class ParseUtil {
 		StringReader reader = new StringReader(xml);
 		XMLEvent xmlEvent;
 		request.header = new Header();
+		request.summary = new Summary();
 		try {
 			XMLEventReader xmlEventReader = xmlInputFactory.createXMLEventReader(reader);
 			while (xmlEventReader.hasNext()) {
@@ -27,6 +29,8 @@ public class ParseUtil {
 				if (xmlEvent.isStartElement()) {
 					StartElement startElement = xmlEvent.asStartElement();
 					switch (startElement.getName().getLocalPart()) {
+
+					// ******************** 1. Parse Header **********************
 					case "extsysname": {
 						xmlEvent = xmlEventReader.nextEvent();
 						if (xmlEvent.isCharacters()) {
@@ -81,7 +85,7 @@ public class ParseUtil {
 						}
 						break;
 					}
-					
+
 					case "groupid": {
 						xmlEvent = xmlEventReader.nextEvent();
 						if (xmlEvent.isCharacters()) {
@@ -89,7 +93,7 @@ public class ParseUtil {
 						}
 						break;
 					}
-					
+
 					case "reqdatetime": {
 						xmlEvent = xmlEventReader.nextEvent();
 						if (xmlEvent.isCharacters()) {
@@ -97,6 +101,42 @@ public class ParseUtil {
 						}
 						break;
 					}
+
+					// ******************** 2. Parse Summary **********************
+
+					case "orgcountdr": {
+						xmlEvent = xmlEventReader.nextEvent();
+						if (xmlEvent.isCharacters()) {
+							request.summary.setOrgcountdr(Short.parseShort(xmlEvent.asCharacters().getData()));
+						}
+						break;
+					}
+
+					case "orgcountcr": {
+						xmlEvent = xmlEventReader.nextEvent();
+						if (xmlEvent.isCharacters()) {
+							request.summary.setOrgcountcr(Short.parseShort(xmlEvent.asCharacters().getData()));
+						}
+						break;
+					}
+
+					case "orgsumdr": {
+						xmlEvent = xmlEventReader.nextEvent();
+						if (xmlEvent.isCharacters()) {
+							request.summary.setOrgsumdr(Float.parseFloat(xmlEvent.asCharacters().getData()));
+						}
+						break;
+					}
+
+					case "orgsumcr": {
+						xmlEvent = xmlEventReader.nextEvent();
+						if (xmlEvent.isCharacters()) {
+							request.summary.setOrgsumcr(Float.parseFloat(xmlEvent.asCharacters().getData()));
+						}
+						break;
+					}
+
+					// ******************** 2. Parse Summary **********************
 
 					}
 
