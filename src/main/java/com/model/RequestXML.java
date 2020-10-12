@@ -4,10 +4,10 @@ public class RequestXML {
 	
 	public Header header;
 	
-	Summary summary;
+	public Summary summary;
 	
-	Debit debitl;
+	public Debit debitl;
 	
-	Credit cridit;
+	public Credit cridit;
 
 }

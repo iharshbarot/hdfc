@@ -43,7 +43,7 @@ public class A2AController {
 		if (request == null) {
 			System.out.println("parse is null");
 		}
-		System.out.println(request.header.extsysname);
+		//System.out.println(request.header.extsysname);
 		print("Parse Complete:", refTime);
 
 		return "null";
