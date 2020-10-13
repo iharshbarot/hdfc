@@ -388,7 +388,7 @@ public class ParseUtil {
 						}
 						break;
 					}
-					
+
 					case "addnlfield1": {
 						xmlEvent = xmlEventReader.nextEvent();
 						if (xmlEvent.isCharacters()) {
@@ -396,7 +396,7 @@ public class ParseUtil {
 						}
 						break;
 					}
-					
+
 					case "addnlfield2": {
 						xmlEvent = xmlEventReader.nextEvent();
 						if (xmlEvent.isCharacters()) {
@@ -404,7 +404,7 @@ public class ParseUtil {
 						}
 						break;
 					}
-					
+
 					case "addnlfield3": {
 						xmlEvent = xmlEventReader.nextEvent();
 						if (xmlEvent.isCharacters()) {
@@ -412,7 +412,7 @@ public class ParseUtil {
 						}
 						break;
 					}
-					
+
 					case "addnlfield4": {
 						xmlEvent = xmlEventReader.nextEvent();
 						if (xmlEvent.isCharacters()) {
@@ -420,7 +420,7 @@ public class ParseUtil {
 						}
 						break;
 					}
-					
+
 					case "addnlfield5": {
 						xmlEvent = xmlEventReader.nextEvent();
 						if (xmlEvent.isCharacters()) {

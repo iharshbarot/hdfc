@@ -126,6 +126,42 @@ public class XMLBuilder {
 			xMLStreamWriter.writeCharacters(request.cridit.getAccountno());
 			xMLStreamWriter.writeEndElement();// close accountno
 			
+			xMLStreamWriter.writeStartElement("amount");
+			xMLStreamWriter.writeCharacters(String.valueOf(request.cridit.getAmount()));
+			xMLStreamWriter.writeEndElement();// close amount
+			
+			xMLStreamWriter.writeStartElement("txndesc");
+			xMLStreamWriter.writeCharacters(request.cridit.getTxndesc());
+			xMLStreamWriter.writeEndElement();// close txndesc
+			
+			xMLStreamWriter.writeStartElement("referenceno");
+			xMLStreamWriter.writeCharacters(request.cridit.getReferenceno());
+			xMLStreamWriter.writeEndElement();// close referenceno
+			
+			xMLStreamWriter.writeStartElement("beneid");
+			xMLStreamWriter.writeCharacters(request.cridit.getBeneid());
+			xMLStreamWriter.writeEndElement();// close beneid
+			
+			xMLStreamWriter.writeStartElement("BeneName");
+			xMLStreamWriter.writeCharacters(request.cridit.getBeneName());
+			xMLStreamWriter.writeEndElement();// close BeneName
+			
+			xMLStreamWriter.writeStartElement("BeneAddress_1");
+			xMLStreamWriter.writeCharacters(request.cridit.getBeneAddress_1());
+			xMLStreamWriter.writeEndElement();// close BeneAddress_1
+			
+			xMLStreamWriter.writeStartElement("BeneAddress_2");
+			xMLStreamWriter.writeCharacters(request.cridit.getBeneAddress_2());
+			xMLStreamWriter.writeEndElement();// close BeneAddress_2
+			
+			xMLStreamWriter.writeStartElement("BeneAddress_3");
+			xMLStreamWriter.writeCharacters(request.cridit.getBeneAddress_3());
+			xMLStreamWriter.writeEndElement();// close BeneAddress_3
+			
+			xMLStreamWriter.writeStartElement("BeneAddress_4");
+			xMLStreamWriter.writeCharacters(request.cridit.getBeneAddress_4());
+			xMLStreamWriter.writeEndElement();// close BeneAddress_4
+			
 			xMLStreamWriter.writeEndElement();// close credit
 			
 			xMLStreamWriter.writeEndElement();// close creditlist

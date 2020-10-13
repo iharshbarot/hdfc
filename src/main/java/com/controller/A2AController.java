@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.model.RequestXML;
 import com.util.ParseUtil;
+import com.util.SignatureUtil;
 import com.util.XMLBuilder;
 
 import org.springframework.http.MediaType;
@@ -51,8 +52,14 @@ public class A2AController {
 		String xml = XMLBuilder.hdfcRequest(request);
 		print("Ganerate Bank Request Complete:", refTime);
 		
+		//********************  5. Sign XML ************************************
+				String signedXML = SignatureUtil.signXML(xml);
+				if (signedXML.equals("")) {
+					
+				}
+				print("Sign XML Complete, Sending to ASA :", refTime);
 
-		return xml;
+		return signedXML;
 	}
 
 	private void print(String message, LocalTime refTime) {
