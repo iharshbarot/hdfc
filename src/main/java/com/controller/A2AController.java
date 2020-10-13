@@ -52,7 +52,7 @@ public class A2AController {
 		String xml = XMLBuilder.hdfcRequest(request);
 		print("Ganerate Bank Request Complete:", refTime);
 		
-		//********************  5. Sign XML ************************************
+		//********************  3. Sign XML ************************************
 				String signedXML = SignatureUtil.signXML(xml);
 				if (signedXML.equals("")) {
 					
