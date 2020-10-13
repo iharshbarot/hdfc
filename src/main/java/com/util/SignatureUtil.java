@@ -29,6 +29,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -72,7 +73,11 @@ public class SignatureUtil {
 			Transformer trans = TransformerFactory.newInstance().newTransformer();
 			StringWriter stringWriter = new StringWriter();
 			Document xmlDocument = dbf.newDocumentBuilder().parse(new InputSource(new StringReader(xml)));
+			
+     
+	        
 			DOMSignContext dsc = new DOMSignContext(KEYENTRY.getPrivateKey(), xmlDocument.getDocumentElement());
+			dsc.setDefaultNamespacePrefix("ds");
 			XMLSignature signature = FAC.newXMLSignature(sInfo, INCLUDEKEYINFO ? kInfo : null);
 			signature.sign(dsc);
 			Node node = dsc.getParent();
