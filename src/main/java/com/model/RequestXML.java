@@ -6,7 +6,7 @@ public class RequestXML {
 	
 	public Summary summary;
 	
-	public Debit debitl;
+	public Debit debit;
 	
 	public Credit cridit;
 

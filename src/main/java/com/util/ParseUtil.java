@@ -8,6 +8,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
+import com.model.Debit;
 import com.model.Header;
 import com.model.RequestXML;
 import com.model.Summary;
@@ -20,8 +21,10 @@ public class ParseUtil {
 		xmlInputFactory.setProperty(XMLInputFactory.IS_COALESCING, Boolean.TRUE);
 		StringReader reader = new StringReader(xml);
 		XMLEvent xmlEvent;
+		String parent = "";
 		request.header = new Header();
 		request.summary = new Summary();
+		request.debit = new Debit();
 		try {
 			XMLEventReader xmlEventReader = xmlInputFactory.createXMLEventReader(reader);
 			while (xmlEventReader.hasNext()) {
@@ -136,8 +139,87 @@ public class ParseUtil {
 						break;
 					}
 
-					// ******************** 2. Parse Summary **********************
+					// ******************** 3. Parse Parent Node Value **********************
 
+					case "debit": {
+						xmlEvent = xmlEventReader.nextEvent();
+						parent = "debit";
+						break;
+					}
+
+					case "credit": {
+						xmlEvent = xmlEventReader.nextEvent();
+						parent = "credit";
+						break;
+					}
+
+					// ******************** 4. Parse Debit *******************************
+
+					case "stanext": {
+						xmlEvent = xmlEventReader.nextEvent();
+						switch (parent) {
+						case "debit": {
+							if (xmlEvent.isCharacters()) {
+								request.debit.setStanext(xmlEvent.asCharacters().getData());
+							}
+							break;
+						}
+						case "credit": {
+							if (xmlEvent.isCharacters()) {
+								request.cridit.setStanext(xmlEvent.asCharacters().getData());
+							}
+							break;
+						}
+						
+						}
+						break;
+					}
+
+					case "accountno": {
+						xmlEvent = xmlEventReader.nextEvent();
+						switch (parent) {
+						case "debit": {
+							if (xmlEvent.isCharacters()) {
+								request.debit.setAccountno(xmlEvent.asCharacters().getData());
+							}
+							break;
+						}
+						case "credit": {
+							if (xmlEvent.isCharacters()) {
+								request.cridit.setAccountno(xmlEvent.asCharacters().getData());
+							}
+							break;
+						}
+						
+						}
+
+						break;
+					}
+
+					case "orgamount": {
+						xmlEvent = xmlEventReader.nextEvent();
+						if (xmlEvent.isCharacters()) {
+							request.debit.setOrgamount(Float.parseFloat(xmlEvent.asCharacters().getData()));
+						}
+						break;
+					}
+					
+					case "txndesc": {
+						xmlEvent = xmlEventReader.nextEvent();
+						if (xmlEvent.isCharacters()) {
+							request.debit.setTxndesc(xmlEvent.asCharacters().getData());
+						}
+						break;
+					}
+					
+					case "referenceno": {
+						xmlEvent = xmlEventReader.nextEvent();
+						if (xmlEvent.isCharacters()) {
+							request.debit.setReferenceno(xmlEvent.asCharacters().getData());
+						}
+						break;
+					}
+					
 					}
 
 				}
