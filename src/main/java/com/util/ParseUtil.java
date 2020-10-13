@@ -8,6 +8,7 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
 
+import com.model.Credit;
 import com.model.Debit;
 import com.model.Header;
 import com.model.RequestXML;
@@ -25,6 +26,7 @@ public class ParseUtil {
 		request.header = new Header();
 		request.summary = new Summary();
 		request.debit = new Debit();
+		request.cridit = new Credit();
 		try {
 			XMLEventReader xmlEventReader = xmlInputFactory.createXMLEventReader(reader);
 			while (xmlEventReader.hasNext()) {
@@ -186,6 +188,7 @@ public class ParseUtil {
 						}
 						case "credit": {
 							if (xmlEvent.isCharacters()) {
+								System.out.println(xmlEvent.asCharacters().getData());
 								request.cridit.setAccountno(xmlEvent.asCharacters().getData());
 							}
 							break;
@@ -216,6 +219,16 @@ public class ParseUtil {
 						xmlEvent = xmlEventReader.nextEvent();
 						if (xmlEvent.isCharacters()) {
 							request.debit.setReferenceno(xmlEvent.asCharacters().getData());
+						}
+						break;
+					}
+					
+					// ******************** 4. Parse Credit *******************************
+					
+					case "amount": {
+						xmlEvent = xmlEventReader.nextEvent();
+						if (xmlEvent.isCharacters()) {
+							request.cridit.setAmount(Float.parseFloat(xmlEvent.asCharacters().getData()));
 						}
 						break;
 					}

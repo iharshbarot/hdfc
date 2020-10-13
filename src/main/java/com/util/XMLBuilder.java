@@ -88,6 +88,48 @@ public class XMLBuilder {
 			
 			xMLStreamWriter.writeEndElement();// close summary
 			
+			// ******************** 2. debit **********************
+			xMLStreamWriter.writeStartElement("debit");
+			
+			xMLStreamWriter.writeStartElement("stanext");
+			xMLStreamWriter.writeCharacters(request.debit.getStanext());
+			xMLStreamWriter.writeEndElement();// close stanext
+			
+			xMLStreamWriter.writeStartElement("accountno");
+			xMLStreamWriter.writeCharacters(request.debit.getAccountno());
+			xMLStreamWriter.writeEndElement();// close accountno
+			
+			xMLStreamWriter.writeStartElement("orgamount");
+			xMLStreamWriter.writeCharacters(String.valueOf(request.debit.getOrgamount()));
+			xMLStreamWriter.writeEndElement();// close orgamount
+			
+			xMLStreamWriter.writeStartElement("txndesc");
+			xMLStreamWriter.writeCharacters(request.debit.getTxndesc());
+			xMLStreamWriter.writeEndElement();// close txndesc
+			
+			xMLStreamWriter.writeStartElement("referenceno");
+			xMLStreamWriter.writeCharacters(request.debit.getReferenceno());
+			xMLStreamWriter.writeEndElement();// close referenceno
+			
+			xMLStreamWriter.writeEndElement();// close debit
+			
+			// ******************** 3. Credit List **********************
+			xMLStreamWriter.writeStartElement("creditlist");
+			
+			xMLStreamWriter.writeStartElement("credit");
+			
+			xMLStreamWriter.writeStartElement("stanext");
+			xMLStreamWriter.writeCharacters(request.cridit.getStanext());
+			xMLStreamWriter.writeEndElement();// close stanext
+			
+			xMLStreamWriter.writeStartElement("accountno");
+			xMLStreamWriter.writeCharacters(request.cridit.getAccountno());
+			xMLStreamWriter.writeEndElement();// close accountno
+			
+			xMLStreamWriter.writeEndElement();// close credit
+			
+			xMLStreamWriter.writeEndElement();// close creditlist
+			
 			xMLStreamWriter.writeEndElement();// close faxml
 
 			xMLStreamWriter.writeEndElement();// close request
