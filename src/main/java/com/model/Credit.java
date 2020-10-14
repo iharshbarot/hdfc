@@ -1,141 +1,176 @@
 package com.model;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+
+@XmlRootElement(name = "credit")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Credit {
 	
 	/**
 	*(mandatory)start from 1 and keep on  incrementing by 1 for the day. (String 2)
 	*/
+	@XmlElement(name = "stanext", required = true)
 	private String stanext;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory. If Bene Id is not received then this will be mandatory field. String(16)
 	*/
+	@XmlElement(name = "accountno", required = true)
 	private String accountno;
 	
 	/**
 	*(mandatory) a) Amount should be greater then '0'.  
 	* b) Amount should be less then limit defined for Beneficiary. FLOAT(13,2)
 	*/
+	@XmlElement(name = "amount", required = true)
 	private float amount;
 	
 	/**
 	*(mandatory).String (40)
 	*/
+	@XmlElement(name = "txndesc", required = true)
 	private String txndesc;
 	
 	/**
 	*(mandatory).String (12)
 	*/
+	@XmlElement(name = "referenceno", required = true)
 	private String referenceno;
 	
 	/**
 	*(not-mandatory) Conditional Mandatory if credit accno is not mentioned in request then Beneid field is mandatory. String (30).
 	*/
+	@XmlElement(name = "beneid", required = true)
 	private String beneid;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory. String (100).
 	*/
+	@XmlElement(name = "BeneName", required = true)
 	private String BeneName;
 	
 	/**
 	*(not-mandatory). String (35).
 	*/
+	@XmlElement(name = "BeneAddress_1", required = true)
 	private String BeneAddress_1;
 	
 	/**
 	*(not-mandatory). String (35).
 	*/
+	@XmlElement(name = "BeneAddress_2", required = true)
 	private String BeneAddress_2;
 	
 	/**
 	*(not-mandatory). String (35).
 	*/
+	@XmlElement(name = "BeneAddress_3", required = true)
 	private String BeneAddress_3;
 	
 	/**
 	*(not-mandatory). String (35).
 	*/
+	@XmlElement(name = "BeneAddress_4", required = true)
 	private String BeneAddress_4;
 	
 	/**
 	*(not-mandatory)Multiple email id can come in this field in coma separated format. String (25).
 	*/
+	@XmlElement(name = "emailid", required = true)
 	private String emailid;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory if email id field having value then one of the advice field should have value (advice_1 to advice_10). String(40)
 	*/
+	@XmlElement(name = "advice1", required = true)
 	private String advice1;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory if email id field having value then one of the advice field should have value (advice_1 to advice_10). String(40)
 	*/
+	@XmlElement(name = "advice2", required = true)
 	private String advice2;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory if email id field having value then one of the advice field should have value (advice_1 to advice_10). String(40)
 	*/
+	@XmlElement(name = "advice3", required = true)
 	private String advice3;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory if email id field having value then one of the advice field should have value (advice_1 to advice_10). String(40)
 	*/
+	@XmlElement(name = "advice4", required = true)
 	private String advice4;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory if email id field having value then one of the advice field should have value (advice_1 to advice_10). String(40)
 	*/
+	@XmlElement(name = "advice5", required = true)
 	private String advice5;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory if email id field having value then one of the advice field should have value (advice_1 to advice_10). String(40)
 	*/
+	@XmlElement(name = "advice6", required = true)
 	private String advice6;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory if email id field having value then one of the advice field should have value (advice_1 to advice_10). String(40)
 	*/
+	@XmlElement(name = "advice7", required = true)
 	private String advice7;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory if email id field having value then one of the advice field should have value (advice_1 to advice_10). String(40)
 	*/
+	@XmlElement(name = "advice8", required = true)
 	private String advice8;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory if email id field having value then one of the advice field should have value (advice_1 to advice_10). String(40)
 	*/
+	@XmlElement(name = "advice9", required = true)
 	private String advice9;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory if email id field having value then one of the advice field should have value (advice_1 to advice_10). String(40)
 	*/
+	@XmlElement(name = "advice10", required = true)
 	private String advice10;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory if email id field having value then one of the advice field should have value (advice_1 to advice_10). String(40)
 	*/
+	@XmlElement(name = "addnlfield1", required = true)
 	private String addnlfield1;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory if email id field having value then one of the advice field should have value (advice_1 to advice_10). String(40)
 	*/
+	@XmlElement(name = "addnlfield2", required = true)
 	private String addnlfield2;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory if email id field having value then one of the advice field should have value (advice_1 to advice_10). String(40)
 	*/
+	@XmlElement(name = "addnlfield3", required = true)
 	private String addnlfield3;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory if email id field having value then one of the advice field should have value (advice_1 to advice_10). String(40)
 	*/
+	@XmlElement(name = "addnlfield4", required = true)
 	private String addnlfield4;
 	
 	/**
 	*(not-mandatory)Conditional Mandatory if email id field having value then one of the advice field should have value (advice_1 to advice_10). String(40)
 	*/
+	@XmlElement(name = "addnlfield5", required = true)
 	private String addnlfield5;
 
 	public String getStanext() {

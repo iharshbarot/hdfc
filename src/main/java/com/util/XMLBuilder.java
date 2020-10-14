@@ -119,47 +119,47 @@ public class XMLBuilder {
 			xMLStreamWriter.writeStartElement("credit");
 			
 			xMLStreamWriter.writeStartElement("stanext");
-			xMLStreamWriter.writeCharacters(request.cridit.getStanext());
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getStanext());
 			xMLStreamWriter.writeEndElement();// close stanext
 			
 			xMLStreamWriter.writeStartElement("accountno");
-			xMLStreamWriter.writeCharacters(request.cridit.getAccountno());
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getAccountno());
 			xMLStreamWriter.writeEndElement();// close accountno
 			
 			xMLStreamWriter.writeStartElement("amount");
-			xMLStreamWriter.writeCharacters(String.valueOf(request.cridit.getAmount()));
+			xMLStreamWriter.writeCharacters(String.valueOf(request.creditlist.cridit.getAmount()));
 			xMLStreamWriter.writeEndElement();// close amount
 			
 			xMLStreamWriter.writeStartElement("txndesc");
-			xMLStreamWriter.writeCharacters(request.cridit.getTxndesc());
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getTxndesc());
 			xMLStreamWriter.writeEndElement();// close txndesc
 			
 			xMLStreamWriter.writeStartElement("referenceno");
-			xMLStreamWriter.writeCharacters(request.cridit.getReferenceno());
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getReferenceno());
 			xMLStreamWriter.writeEndElement();// close referenceno
 			
 			xMLStreamWriter.writeStartElement("beneid");
-			xMLStreamWriter.writeCharacters(request.cridit.getBeneid());
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getBeneid());
 			xMLStreamWriter.writeEndElement();// close beneid
 			
 			xMLStreamWriter.writeStartElement("BeneName");
-			xMLStreamWriter.writeCharacters(request.cridit.getBeneName());
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getBeneName());
 			xMLStreamWriter.writeEndElement();// close BeneName
 			
 			xMLStreamWriter.writeStartElement("BeneAddress_1");
-			xMLStreamWriter.writeCharacters(request.cridit.getBeneAddress_1());
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getBeneAddress_1());
 			xMLStreamWriter.writeEndElement();// close BeneAddress_1
 			
 			xMLStreamWriter.writeStartElement("BeneAddress_2");
-			xMLStreamWriter.writeCharacters(request.cridit.getBeneAddress_2());
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getBeneAddress_2());
 			xMLStreamWriter.writeEndElement();// close BeneAddress_2
 			
 			xMLStreamWriter.writeStartElement("BeneAddress_3");
-			xMLStreamWriter.writeCharacters(request.cridit.getBeneAddress_3());
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getBeneAddress_3());
 			xMLStreamWriter.writeEndElement();// close BeneAddress_3
 			
 			xMLStreamWriter.writeStartElement("BeneAddress_4");
-			xMLStreamWriter.writeCharacters(request.cridit.getBeneAddress_4());
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getBeneAddress_4());
 			xMLStreamWriter.writeEndElement();// close BeneAddress_4
 			
 			xMLStreamWriter.writeEndElement();// close credit
