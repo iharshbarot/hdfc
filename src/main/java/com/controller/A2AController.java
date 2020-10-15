@@ -22,6 +22,8 @@ import org.springframework.http.MediaType;
 
 import static java.time.temporal.ChronoUnit.MILLIS;
 
+import java.text.ParseException;
+
 @SpringBootApplication
 @RestController
 @RequestMapping("/auth/A2A")
@@ -33,18 +35,20 @@ public class A2AController {
 	}
 
 	@PostMapping(value = "/paymentreq", produces = { MediaType.APPLICATION_XML_VALUE })
-	public String acceptRequest25(@RequestBody String requestXML, HttpServletRequest httpRequest) throws JAXBException {
+	public String acceptRequest25(@RequestBody String requestXML, HttpServletRequest httpRequest)
+			throws JAXBException, ParseException {
 		return processAndBuildResponse(requestXML, httpRequest);
 	}
 
-	private String processAndBuildResponse(String requestXML, HttpServletRequest httpRequest) throws JAXBException {
+	private String processAndBuildResponse(String requestXML, HttpServletRequest httpRequest)
+			throws JAXBException, ParseException {
 
 		LocalTime refTime = LocalTime.now();
 		print(System.lineSeparator() + "Entered A2A :", refTime);
 
 		// ******************** 1. Parse the XML to Object**********************
 		RequestXML request = JAXBHelper.convertToObject(requestXML, RequestXML.class);
-		
+
 		print("Parse Complete:", refTime);
 
 		String validationError = Validator.Validate(request);
@@ -53,7 +57,7 @@ public class A2AController {
 		print("Validation Complete:", refTime);
 
 		// ******************** 2. Generate Bank Request**********************
-		//String xml = JAXBHelper.convertToXML(requestXml, Request.class);
+		// String xml = JAXBHelper.convertToXML(requestXml, Request.class);
 		String xml = XMLBuilder.hdfcRequest(request);
 		print("Ganerate Bank Request Complete:", refTime);
 
@@ -62,6 +66,10 @@ public class A2AController {
 		if (signedXML.equals("")) {
 
 		}
+
+		// ******************** 4. Sign XML ************************************
+		
+		
 		print("Sign XML Complete, Sending to ASA :", refTime);
 
 		return signedXML;

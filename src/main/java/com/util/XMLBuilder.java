@@ -162,6 +162,73 @@ public class XMLBuilder {
 			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getBeneAddress_4());
 			xMLStreamWriter.writeEndElement();// close BeneAddress_4
 			
+			xMLStreamWriter.writeStartElement("emailid");
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getEmailid());
+			xMLStreamWriter.writeEndElement();// close emailid
+			
+			xMLStreamWriter.writeStartElement("advice1");
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getAdvice1());
+			xMLStreamWriter.writeEndElement();// close advice1
+			
+			xMLStreamWriter.writeStartElement("advice2");
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getAdvice2());
+			xMLStreamWriter.writeEndElement();// close advice2
+			
+			xMLStreamWriter.writeStartElement("advice3");
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getAdvice3());
+			xMLStreamWriter.writeEndElement();// close advice3
+			
+			
+			xMLStreamWriter.writeStartElement("advice4");
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getAdvice4());
+			xMLStreamWriter.writeEndElement();// close advice4
+
+			xMLStreamWriter.writeStartElement("advice5");
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getAdvice5());
+			xMLStreamWriter.writeEndElement();// close advice5
+
+			
+			xMLStreamWriter.writeStartElement("advice6");
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getAdvice6());
+			xMLStreamWriter.writeEndElement();// close advice6
+			
+			xMLStreamWriter.writeStartElement("advice7");
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getAdvice7());
+			xMLStreamWriter.writeEndElement();// close advice7
+			
+			xMLStreamWriter.writeStartElement("advice8");
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getAdvice8());
+			xMLStreamWriter.writeEndElement();// close advice8
+			
+			xMLStreamWriter.writeStartElement("advice9");
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getAdvice9());
+			xMLStreamWriter.writeEndElement();// close advice9
+			
+			xMLStreamWriter.writeStartElement("advice10");
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getAdvice10());
+			xMLStreamWriter.writeEndElement();// close advice10
+			
+			xMLStreamWriter.writeStartElement("addnlfield1");
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getAddnlfield1());
+			xMLStreamWriter.writeEndElement();// close addnlfield1
+			
+			xMLStreamWriter.writeStartElement("addnlfield2");
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getAddnlfield2());
+			xMLStreamWriter.writeEndElement();// close addnlfield2
+			
+			xMLStreamWriter.writeStartElement("addnlfield3");
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getAddnlfield3());
+			xMLStreamWriter.writeEndElement();// close addnlfield3
+			
+			xMLStreamWriter.writeStartElement("addnlfield4");
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getAddnlfield4());
+			xMLStreamWriter.writeEndElement();// close addnlfield4
+			
+			xMLStreamWriter.writeStartElement("addnlfield5");
+			xMLStreamWriter.writeCharacters(request.creditlist.cridit.getAddnlfield5());
+			xMLStreamWriter.writeEndElement();// close addnlfield5
+			
+			
 			xMLStreamWriter.writeEndElement();// close credit
 			
 			xMLStreamWriter.writeEndElement();// close creditlist
