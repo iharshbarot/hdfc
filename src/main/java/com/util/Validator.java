@@ -51,7 +51,26 @@ public class Validator {
 		if (request.header.getIdcust().equals("") || request.header.getIdcust().equals(null)) {
 			return AppConstants.ERROR1009;
 		}
-
+		if(request.header.getGroupid().equals("")|| request.header.getGroupid().equals(null))
+		{
+			return AppConstants.ERROR1010;
+		}
+		if(request.header.getReqdatetime().equals("")|| request.header.getReqdatetime().equals(null))
+		{
+			return AppConstants.ERROR1011;
+		}
+		//summary
+		
+		
+		
+	
+		
+		
+		
+		
+		
+		
+//		stanext and amount validation
 		return "";
 
 	}
