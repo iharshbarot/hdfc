@@ -15,13 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.model.RequestJason;
-import com.model.RequestXML;
 import com.util.AESEncrypterDecrypter;
-import com.util.JAXBHelper;
 import com.util.KeyGenerator;
+import com.util.Opration;
 import com.util.SignatureUtil;
-import com.util.Validator;
-import com.util.XMLBuilder;
 
 import org.springframework.http.MediaType;
 
@@ -45,48 +42,21 @@ public class A2AController {
 		return processAndBuildResponse(requestXML, httpRequest,paymentmode);
 	}
 
-	private String processAndBuildResponse(String requestXML, HttpServletRequest httpRequest, String paymentmode)
-			throws JAXBException, ParseException {
+	private String processAndBuildResponse(String requestXML, HttpServletRequest httpRequest, String paymentmode) {
 
 		RequestJason requestJason = new RequestJason();
-		RequestXML request;
 		LocalTime refTime = LocalTime.now();
 		print(System.lineSeparator() + "Entered A2A :", refTime);
 
 		/**
-		 * 1. Parse Request XML for Different payment method
-		 */
-		switch (paymentmode) {
-		case "A2A": {
-			request = JAXBHelper.convertToObject(requestXML, RequestXML.class);
-			if (request == null) {
-
-			}
-			break;
-		}
-		default:
-			throw new IllegalArgumentException("Unexpected value: " + paymentmode);
-		}
-		print("Parse Complete:", refTime);
-
-		/**
+		 * 1. Parse Request XML for Different payment method.
 		 * 2. Validation
-		 */
-		String validationError = Validator.Validate(request);
-		if (!validationError.equals("")) {
-
-		}
-		print("Validation Complete:", refTime);
-
-		/**
-		 * 3. Generate The original REST-XML
-		 * The request needs to be wrapped inside the tags
-		 * <request></request> along with original request XML 
+		 * 3. Generate original Request XML
 		 * 
-		 * @return Original request XML
+		 * @return Original Request XML
 		 */
-		String xml = XMLBuilder.hdfcRequest(request);
-		print("Ganerate Bank Request Complete:", refTime);
+		
+		String xml = Opration.xmlPerformace(requestXML,paymentmode);
 
 		/**
 		 * 4.1 RequestSignatureEncryptedValue. 

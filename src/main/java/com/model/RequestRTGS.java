@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "faxml")
 @XmlAccessorType(XmlAccessType.FIELD)
-public class RequestXML {
+public class RequestRTGS {
 	
 	@XmlElement(name = "header", required = true)
 	public Header header;
@@ -15,10 +15,7 @@ public class RequestXML {
 	@XmlElement(name = "summary", required = true)
 	public Summary summary;
 	
-	@XmlElement(name = "debit", required = true)
-	public Debit debit;
-	 
-	@XmlElement(name = "creditlist", required = true)
-	public Creditlist creditlist;
-	
+	@XmlElement(name = "paymentlist", required = true)
+	public Paymentlist paymentlist;
+
 }

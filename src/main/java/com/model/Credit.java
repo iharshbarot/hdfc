@@ -17,7 +17,7 @@ public class Credit {
 	private String stanext;
 	
 	/**
-	*(not-mandatory)Conditional Mandatory. If Bene Id is not received then this will be mandatory field. String(16)
+	*(mandatory)Conditional Mandatory. If Bene Id is not received then this will be mandatory field. String(16)
 	*/
 	@XmlElement(name = "accountno", required = true)
 	private String accountno;
@@ -172,6 +172,46 @@ public class Credit {
 	*/
 	@XmlElement(name = "addnlfield5", required = true)
 	private String addnlfield5;
+	
+	//Extra Parameter in IMPS Payment Method
+	
+	/**
+	*(mandatory)External system refernce number. String(12)
+	*/
+	@XmlElement(name = "rrnrefno", required = true)
+	private String rrnrefno;
+	
+	/**
+	*(mandatory)Fix value P2A will be received. String(3)
+	*/
+	@XmlElement(name = "paymttype", required = true)
+	private String paymttype;
+	
+	/**
+	*(non-mandatory)Conditional Mandatory. If Bene Id is not received then this will be mandatory field. String(11)
+	*/
+	@XmlElement(name = "ifsc", required = true)
+	private String ifsc;
+	
+	/**
+	*(non-mandatory)Conditional Mandatory. If Bene Id is not received then this will be mandatory field. String(35)
+	*/
+	@XmlElement(name = "beneacc", required = true)
+	private String beneacc;
+	
+	/**
+	*(non-mandatory). String(100)
+	*/
+	@XmlElement(name = "purposecode", required = true)
+	private String purposecode;
+	
+	/**
+	*(non-mandatory). String(2)
+	*/
+	@XmlElement(name = "beneacctype", required = true)
+	private String beneacctype;
+	
+	
 
 	public String getStanext() {
 		return stanext;
@@ -388,6 +428,56 @@ public class Credit {
 	public void setAddnlfield5(String addnlfield5) {
 		this.addnlfield5 = addnlfield5;
 	}
+	
+	
+
+	public String getRrnrefno() {
+		return rrnrefno;
+	}
+
+	public void setRrnrefno(String rrnrefno) {
+		this.rrnrefno = rrnrefno;
+	}
+
+	public String getPaymttype() {
+		return paymttype;
+	}
+
+	public void setPaymttype(String paymttype) {
+		this.paymttype = paymttype;
+	}
+
+	public String getIfsc() {
+		return ifsc;
+	}
+
+	public void setIfsc(String ifsc) {
+		this.ifsc = ifsc;
+	}
+
+	public String getBeneacc() {
+		return beneacc;
+	}
+
+	public void setBeneacc(String beneacc) {
+		this.beneacc = beneacc;
+	}
+
+	public String getPurposecode() {
+		return purposecode;
+	}
+
+	public void setPurposecode(String purposecode) {
+		this.purposecode = purposecode;
+	}
+
+	public String getBeneacctype() {
+		return beneacctype;
+	}
+
+	public void setBeneacctype(String beneacctype) {
+		this.beneacctype = beneacctype;
+	}
 
 	@Override
 	public String toString() {
@@ -398,7 +488,9 @@ public class Credit {
 				+ advice2 + ", advice3=" + advice3 + ", advice4=" + advice4 + ", advice5=" + advice5 + ", advice6="
 				+ advice6 + ", advice7=" + advice7 + ", advice8=" + advice8 + ", advice9=" + advice9 + ", advice10="
 				+ advice10 + ", addnlfield1=" + addnlfield1 + ", addnlfield2=" + addnlfield2 + ", addnlfield3="
-				+ addnlfield3 + ", addnlfield4=" + addnlfield4 + ", addnlfield5=" + addnlfield5 + "]";
+				+ addnlfield3 + ", addnlfield4=" + addnlfield4 + ", addnlfield5=" + addnlfield5 + ", rrnrefno="
+				+ rrnrefno + ", paymttype=" + paymttype + ", ifsc=" + ifsc + ", beneacc=" + beneacc + ", purposecode="
+				+ purposecode + ", beneacctype=" + beneacctype + "]";
 	}
 	
 	

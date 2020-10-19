@@ -15,6 +15,7 @@ public class Summary {
 	@XmlElement(name = "orgcountdr", required = true)
 	private short orgcountdr;
 	
+	
 	/**
 	*(not-mandatory) this can be min 1 to max 10. (Num 2)
 	*/
@@ -32,9 +33,37 @@ public class Summary {
 	*/
 	@XmlElement(name = "orgsumcr", required = true)
 	private float orgsumcr;
+	
+	/**
+	*(not-mandatory) sumcr should match with the total of the cr in credit tags.FLOAT(13,2)
+	*/
+	@XmlElement(name = "orgcountpmt", required = true)
+	private float orgcountpmt;
+	
+	/**
+	*(not-mandatory) sumcr should match with the total of the cr in credit tags.FLOAT(13,2)
+	*/
+	@XmlElement(name = "orgsumpmt", required = true)
+	private float orgsumpmt;
 
 	public short getOrgcountdr() {
 		return orgcountdr;
+	}
+
+	public float getOrgcountpmt() {
+		return orgcountpmt;
+	}
+
+	public void setOrgcountpmt(float orgcountpmt) {
+		this.orgcountpmt = orgcountpmt;
+	}
+
+	public float getOrgsumpmt() {
+		return orgsumpmt;
+	}
+
+	public void setOrgsumpmt(float orgsumpmt) {
+		this.orgsumpmt = orgsumpmt;
 	}
 
 	public void setOrgcountdr(short orgcountdr) {
@@ -68,7 +97,7 @@ public class Summary {
 	@Override
 	public String toString() {
 		return "Summary [orgcountdr=" + orgcountdr + ", orgcountcr=" + orgcountcr + ", orgsumdr=" + orgsumdr
-				+ ", orgsumcr=" + orgsumcr + "]";
+				+ ", orgsumcr=" + orgsumcr + ", orgcountpmt=" + orgcountpmt + ", orgsumpmt=" + orgsumpmt + "]";
 	}
 	
 	
