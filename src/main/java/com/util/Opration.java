@@ -9,6 +9,12 @@ import com.model.RequestXML;
 
 public class Opration {
 
+	/**
+	 * @Param Request XML
+	 * Parse XML
+	 * Validation
+	 * @return Original Request XML
+	 */
 	public static String xmlPerformace(String requestXML, String paymentMode) {
 
 		switch (paymentMode) {
@@ -52,7 +58,6 @@ public class Opration {
 				if (request == null) {
 					return "Error in Parsing XML";
 				}
-				//String originalXML = XMLBuilder.RTGS(request);
 				String originalXML = XMLBuilder.RTGS(request);
 				return originalXML;
 			} catch (JAXBException e) {
@@ -61,7 +66,7 @@ public class Opration {
 				return null;
 			}
 		}
-		
+
 		case "NEFT": {
 
 			try {
@@ -69,7 +74,6 @@ public class Opration {
 				if (request == null) {
 					return "Error in Parsing XML";
 				}
-				//String originalXML = XMLBuilder.RTGS(request);
 				String originalXML = XMLBuilder.NEFT(request);
 				return originalXML;
 			} catch (JAXBException e) {
@@ -78,12 +82,7 @@ public class Opration {
 				return null;
 			}
 		}
-		
-		
-		
-		
-		
-		
+
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + paymentMode);
 		}
