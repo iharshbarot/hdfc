@@ -2,6 +2,7 @@ package com.util;
 
 import javax.xml.bind.JAXBException;
 
+import com.model.RequestNEFT;
 import com.model.RequestPMPS;
 import com.model.RequestRTGS;
 import com.model.RequestXML;
@@ -52,7 +53,7 @@ public class Opration {
 					return "Error in Parsing XML";
 				}
 				//String originalXML = XMLBuilder.RTGS(request);
-				String originalXML = JAXBHelper.convertToXML(request, RequestRTGS.class);
+				String originalXML = XMLBuilder.RTGS(request);
 				return originalXML;
 			} catch (JAXBException e) {
 				// TODO Auto-generated catch block
@@ -60,6 +61,28 @@ public class Opration {
 				return null;
 			}
 		}
+		
+		case "NEFT": {
+
+			try {
+				RequestNEFT request = JAXBHelper.convertToObject(requestXML, RequestNEFT.class);
+				if (request == null) {
+					return "Error in Parsing XML";
+				}
+				//String originalXML = XMLBuilder.RTGS(request);
+				String originalXML = XMLBuilder.NEFT(request);
+				return originalXML;
+			} catch (JAXBException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return null;
+			}
+		}
+		
+		
+		
+		
+		
 		
 		default:
 			throw new IllegalArgumentException("Unexpected value: " + paymentMode);

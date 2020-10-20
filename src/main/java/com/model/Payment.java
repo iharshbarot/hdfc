@@ -36,17 +36,13 @@ public class Payment {
 	@XmlElement(name = "amount", required = true)
 	private Float amount;
 
-	
 	/**
 	 * (mandatory)Credit & Debit Amount a) Amount should be greater then '0' b)
 	 * Amount should be less then limit defined for Beneficiary. (Float 13,2)
 	 */
 	@XmlElement(name = "accountno", required = true)
 	private Float accountno;
-	
-	
-	
-	
+
 	/**
 	 * (mandatory) (String 50)
 	 */
@@ -71,7 +67,6 @@ public class Payment {
 	@XmlElement(name = "accounttype", required = true)
 	private String accounttype;
 
-	
 	/**
 	 * (non-mandatory) (String 35)
 	 */
@@ -109,7 +104,7 @@ public class Payment {
 	 */
 	@XmlElement(name = "ifsccode", required = true)
 	private String ifsccode;
-	
+
 	/**
 	 * (non-mandatory) (String 10)
 	 */
@@ -406,6 +401,16 @@ public class Payment {
 	 */
 	@XmlElement(name = "paydetail", required = true)
 	private String paydetail;
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
@@ -873,8 +878,6 @@ public class Payment {
 	public void setPaydetail(String paydetail) {
 		this.paydetail = paydetail;
 	}
-	
-	
 
 	public String getAccounttype() {
 		return accounttype;
@@ -883,8 +886,6 @@ public class Payment {
 	public void setAccounttype(String accounttype) {
 		this.accounttype = accounttype;
 	}
-	
-	
 
 	public Float getAccountno() {
 		return accountno;
@@ -894,8 +895,6 @@ public class Payment {
 		this.accountno = accountno;
 	}
 
-	
-	
 	public String getIfsccode() {
 		return ifsccode;
 	}
@@ -903,6 +902,12 @@ public class Payment {
 	public void setIfsccode(String ifsccode) {
 		this.ifsccode = ifsccode;
 	}
+	
+	
+	
+	
+
+	
 
 	@Override
 	public String toString() {
