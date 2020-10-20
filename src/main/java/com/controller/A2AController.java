@@ -14,12 +14,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.model.RequestJason;
 import com.util.AESEncrypterDecrypter;
+import com.util.HttpClientUtil;
 import com.util.KeyGenerator;
 import com.util.Opration;
 import com.util.RSAEncrypterDecrypter;
 import com.util.SignatureUtil;
+import com.util.TransactionNoUtil;
 
 import org.springframework.http.MediaType;
 
@@ -118,10 +122,25 @@ public class A2AController {
 		 * @return encoded randomKey Key
 		 */
 		byte[] SymmetricKeyEncryptedValue = RSAEncrypterDecrypter.encrypt(encodedRandomKey);
-		
-		requestJason.setSymmetricKeyEncryptedValue(Base64.getEncoder().encodeToString(SymmetricKeyEncryptedValue));
 
-		return signedXML;
+		requestJason.setSymmetricKeyEncryptedValue(Base64.getEncoder().encodeToString(SymmetricKeyEncryptedValue));
+		/**
+		 * @return Set a unique transaction ID every-time for identifying the request,
+		 *         in order to retrieve it from an audit trail.
+		 */
+		requestJason.setTransactionId(TransactionNoUtil.generateTxnNo());
+
+		String jsonString = null;
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			jsonString = mapper.writeValueAsString(requestJason);
+		} catch (JsonProcessingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String responseJason;
+		responseJason = HttpClientUtil.postToHDFCAsync(jsonString).join();;
+		return responseJason;
 	}
 
 	private void print(String message, LocalTime refTime) {
