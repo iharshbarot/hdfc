@@ -29,14 +29,6 @@ import org.springframework.http.MediaType;
 
 import static java.time.temporal.ChronoUnit.MILLIS;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.security.NoSuchProviderException;
-import java.security.PublicKey;
-import java.security.cert.CertificateException;
-import java.security.cert.CertificateFactory;
-import java.security.cert.X509Certificate;
 import java.text.ParseException;
 
 @SpringBootApplication
@@ -139,7 +131,8 @@ public class A2AController {
 			e.printStackTrace();
 		}
 		String responseJason;
-		responseJason = HttpClientUtil.postToHDFCAsync(jsonString).join();;
+		responseJason = HttpClientUtil.postToHDFCAsync(jsonString).join();
+		;
 		return responseJason;
 	}
 
