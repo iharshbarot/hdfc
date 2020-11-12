@@ -22,9 +22,9 @@ public class HttpClientUtil {
 	public static CompletableFuture<String> postToHDFCAsync(String requestJson) {
 
 		HttpRequest request = HttpRequest.newBuilder().uri(URI.create(String.format(HDFC_URL))).timeout(TIMEOUT)
-				.header("Content-Type", "application/xml").POST(BodyPublishers.ofString(requestJson)).build();
+				.header("Content-Type", "application/json").POST(BodyPublishers.ofString(requestJson)).build();
 		HttpClient client = HttpClient.newHttpClient();
-
+		System.out.println(request);
 		return client.sendAsync(request, BodyHandlers.ofString()).thenApply(HttpResponse::body);
 	}
 }
